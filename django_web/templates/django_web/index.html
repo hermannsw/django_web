@@ -1,0 +1,46 @@
+{% extends "django_web/base.html" %}
+
+{% block content %}
+
+<section>
+  <div class="jumbotron">
+    <h1 class="display-3">Welcome, django_web</h1>
+    <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+    <hr class="my-2">
+    <div class="row align-items-center">
+      <div class="col-lg-6 g-mb-30 g-mb-0--lg" style="background-color: #eee;">
+      </div>
+      <div class="col-lg-6 g-mb-30 g-mb-0--lg" style="background-color: #eee;">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Login</h4>
+            <form action="{% url 'users:login' %}" method="post" role="form">
+              {% csrf_token %}
+              <div class="form-group">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <button class="btn btn-success" type="button" disabled="disabled">UserName</button>
+                  </div>
+                  <input id="id_username" class="form-control" name="username" type="text" value="" maxlength="256" placeholder="Username" aria-label="" aria-describedby="basic-addon1" autofocus required/>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <button class="btn btn-success" type="button" disabled="disabled">Password</button>
+                  </div>
+                  <input id="id_password" class="form-control" name="password" type="password" value="" maxlength="256" placeholder="Password" aria-label="" aria-describedby="basic-addon1" required/>
+                </div>
+              </div>
+              <input name="next" type="hidden" value="{{ next }}"/>
+              <button type="submit" class="btn btn-primary btn-sm">Login</button>
+              <a href="{% url 'users:signup' %}" class="btn btn-primary btn-sm">Sign up</a>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "django_web/base.html" %}
+
+{% block content %}
+
+<table>
+    <tr><td>title: </td><td>{{ post.title }}</td></tr>
+    <tr><td>body: </td><td>{{ post.body }}</td></tr>
+</table>
+
+<form method="post" action="{% url 'posts:reply-create' %}">
+    {% csrf_token %}
+    <input type="hidden" name="post_id" value="{{ post.id }}">
+    {{ form.non_field_errors }}
+    <label for="id_body" class="disp-block color-white">body: </label>
+    {{ form.errors.body }}
+    {{ form.body }}
+    {{ form.errors.is_public }}
+    <label for="id_is_public" class="disp-block color-white">公開: </label>
+    {{ form.is_public }}
+    <input type="submit" value="Create">
+</form>
+
+<table>
+    {% for r in replies %}
+    <tr><td>user: </td><td>{{ r.user.username }}</td></tr>
+    <tr><td>body: </td><td>{{ r.reply.body }}</td></tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

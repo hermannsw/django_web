@@ -1,0 +1,20 @@
+{% extends "django_web/base.html" %}
+
+{% block content %}
+
+<form method="post" action="{% url 'posts:confirm' %}">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    {{ form.errors.title }}
+    <label for="id_title" class="disp-block color-white">title: </label>
+    {{ form.title }}
+    <label for="id_body" class="disp-block color-white">body: </label>
+    {{ form.errors.body }}
+    {{ form.body }}
+    {{ form.errors.is_public }}
+    <label for="id_is_public" class="disp-block color-white">公開: </label>
+    {{ form.is_public }}
+    <input type="submit" value="Create">
+</form>
+
+{% endblock %}

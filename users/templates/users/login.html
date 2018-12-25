@@ -1,0 +1,33 @@
+{% extends "django_web/base.html" %}
+
+{% block content %}
+
+<section>
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">django_web ログイン</h4>
+      {% if form.errors  %}
+        <div class="alert alert-danger" role="alert">
+          <p>Your username and password didn't match. Please try again.</p>
+        </div>
+      {% endif %}
+      <form action="{% url 'users:login' %}" method="post" role="form">
+        {% csrf_token %}
+        <div class="input-group" style="margin-bottom:10px">
+          <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
+          <input id="id_username" name="username" type="text" value="" maxlength="256" placeholder="Username" aria-describedby="sizing-addon1" autofocus required/>
+        </div>
+        <div class="input-group" style="margin-bottom:10px">
+          <span class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
+          <input id="id_password" name="password" type="password" value="" maxlength="256" placeholder="Password" aria-describedby="sizing-addon1" required/>
+        </div>
+        <button type="submit" style="margin-bottom:-20px"><i class="fa fa-sign-in">Login</i></button>
+        <input name="next" type="hidden" value="{{ next }}"/>
+        <a href="{% url 'social:begin' 'facebook' %}">Login with Facebook</a><br>
+        <a href="{% url 'social:begin' backend='linkedin-oauth2' %}">Login with Linkedin</a>
+      </form>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

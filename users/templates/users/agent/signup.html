@@ -1,0 +1,23 @@
+{% extends "django_web/base.html" %}
+
+{% block content %}
+<form method="post" action="{% url 'users:agent-confirm' %}">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    {{ form.errors.username }}
+    <label for="id_username" class="disp-block color-white">nickname</label>
+    {{ form.username }}
+    <label for="id_email" class="disp-block color-white">email</label>
+    {{ form.errors.email }}
+    {{ form.email }}
+    {{ form.errors.password1 }}
+    <label for="id_password1" class="disp-block color-white">password1</label>
+    {{ form.password1 }}
+    {{ form.errors.password2 }}
+    <label for="id_password2" class="disp-block color-white">password2</label>
+    {{ form.password2 }}
+    <label for="id_is_career_consultant" class="disp-block color-white">キャリアコンサルタントの資格を有している</label>
+    {{ form.is_career_consultant }}
+    <input type="submit" value="Create">
+</form>
+{% endblock %}

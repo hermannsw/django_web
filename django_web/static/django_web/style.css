@@ -1,0 +1,12 @@
+.no-margin {
+    margin: 0;
+}
+
+.navbar-bgcolor {
+    background-color: #58007b;
+    color: white;
+}
+
+.container-margin-top {
+    margin-top: 4rem;
+}

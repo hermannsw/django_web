@@ -1,0 +1,41 @@
+{% extends "django_web/base.html" %}
+
+{% block content %}
+
+<h1>My Profile</h1>
+<section class="w-80 mx-auto">
+  <div class="card h-50">
+    <div class="card-upper-area">
+      <img class="card-img-top pull-left w-50 float-left" src="{{ image_url }}" alt="profile_image">
+      <table class="float-right w-50">
+        <tr>
+          <td>{{ user.username }}</td>
+        </tr>
+        <tr>
+          <td>{{ detail.birthed_at }}</td>
+        </tr>
+      </table>
+    </div>
+    <div class="card-body pull-right">
+      <a href="{% url 'mypage:edit' %}" class="btn btn-primary">Edit</a>
+    </div>
+  </div>
+</section>
+
+<section class="w-80 p-3 mx-auto">
+    <h2>my posts</h2>
+    <table>
+        <tr>
+            <th>is public</th><th>title</th><th>body</th>
+        </tr>
+        {% for p in posts %}
+            <tr>
+                <td>{{ p.is_public }}</td>
+                <td>{{ p.title }}</td>
+                <td>{{ p.body }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</section>
+
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends "django_web/base.html" %}
+
+{% block content %}
+<table>
+    <tr><td>ニックネーム: </td><td>{{ username }}</td></tr>
+    <tr><td>Email: </td><td>{{ email }}</td></tr>
+</table>
+<form method="post" action="{% url 'users:create' %}">
+    {% csrf_token %}
+    <input type="submit" value="Create">
+</form>
+{% endblock %}

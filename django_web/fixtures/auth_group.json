@@ -1,0 +1,16 @@
+[
+  {
+    "model": "auth.group",
+    "pd": 1,
+    "fields": {
+      "name": "general"
+    }
+  },
+  {
+    "model": "auth.group",
+    "pd": 2,
+    "fields": {
+      "name": "agent"
+    }
+  }
+]

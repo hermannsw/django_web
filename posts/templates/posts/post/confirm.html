@@ -1,0 +1,15 @@
+{% extends "django_web/base.html" %}
+
+{% block content %}
+
+<table>
+    <tr><td>title: </td><td>{{ title }}</td></tr>
+    <tr><td>body: </td><td>{{ body }}</td></tr>
+    <tr><td>is_public: </td><td>{{ is_public }}</td></tr>
+</table>
+<form method="post" action="{% url 'posts:save' %}">
+    {% csrf_token %}
+    <input type="submit" value="Create">
+</form>
+
+{% endblock %}

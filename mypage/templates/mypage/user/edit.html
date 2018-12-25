@@ -1,0 +1,32 @@
+{% extends "django_web/base.html" %}
+
+{% block content %}
+
+<section class="w-80 p-3 mx-auto">
+  <div class="card">
+    <img class="card-img-top pull-left" src="{{ image_url }}" alt="profile_image">
+    <div class="card-body pull-right">
+      <h4 class="card-title">Edit Profile</h4>
+      <form method="post" action="{% url 'mypage:edit-save' %}">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        {{ form.errors.first_name }}
+        <label for="id_first_name" class="disp-block color-white">first_name</label>
+        {{ form.first_name }}
+        {{ form.errors.last_name }}
+        <label for="id_last_name" class="disp-block color-white">last_name</label>
+        {{ form.last_name }}
+        {{ form.errors.birthed_at }}
+        <label for="id_birthed_at" class="disp-block color-white">birthed_at</label>
+        {{ form.birthed_at }}
+        {{ form.errors.residence }}
+        <label for="id_residence" class="disp-block color-white">residence</label>
+        {{ form.residence }}
+        <a href="#" onclick="javascript:window.history.back(-1);return false;">Cansel</a>
+        <input type="submit" value="submit">
+      </form>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
